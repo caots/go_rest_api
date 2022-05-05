@@ -3,8 +3,8 @@ package main
 
 import (
 	"fmt"
-	"rest_api/Models"
 	Config "rest_api/config"
+	"rest_api/models"
 	Routes "rest_api/routers"
 
 	"github.com/jinzhu/gorm"
@@ -18,7 +18,7 @@ func main() {
 		fmt.Println("Status:", err)
 	}
 	defer Config.DB.Close()
-	Config.DB.AutoMigrate(&Models.User{})
+	Config.DB.AutoMigrate(&models.User{})
 	r := Routes.SetupRouter()
 	//running
 	r.Run()
